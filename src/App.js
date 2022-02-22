@@ -30,15 +30,30 @@ function App() {
         setUsers(users.filter((user) => user.id !== id))
     }
 
+    /**
+     * Booleano que indica si se está editando o no
+     */
     const [editing, setEditing] = useState(false)
 
+    /**
+     * Estado donde se guarda el usuario sin modificar
+     */
     const [currentUser, setCurrentUser] = useState({id: null, name: "", username: ""})
 
+    /**
+     * Modifica el usuario
+     * @param {*} user
+     */
     const editRow = user => {
     setEditing(true)
     setCurrentUser({ id: user.id, name: user.name, username: user.username })
     }
 
+    /**
+     * Actualiza el usuario en el array
+     * @param {*} id
+     * @param {*} updatedUser
+     */
     const updateUser = (id, updatedUser) => {
     setEditing(false)
     setUsers(users.map(user => (user.id === id ? updatedUser : user)))
